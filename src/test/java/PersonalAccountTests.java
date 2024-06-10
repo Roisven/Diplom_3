@@ -11,7 +11,10 @@ import PageObjects.HomePage;
 import PageObjects.LoginPage;
 import PageObjects.PersonalAccountPage;
 
+
+
 import java.time.Duration;
+
 
 
 public class PersonalAccountTests {
@@ -22,7 +25,6 @@ public class PersonalAccountTests {
     @Step("Open site and login")
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
@@ -33,13 +35,13 @@ public class PersonalAccountTests {
         homePage.clickButtonPersonalAccount();
 
         loginPage = new LoginPage(driver);
-        loginPage.login("aaa1@ya.ru", "aaaaaa1");
+        loginPage.login("aloxart@yandex.ru", "12345678");
 
         homePage.clickButtonPersonalAccount();
     }
     @Test
     @DisplayName("Logout")
-    public void logOutOfAccount() {
+    public void logOutOfAccount() throws InterruptedException {
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickButtonGetOutOfAccount();
         loginPage = new LoginPage(driver);
