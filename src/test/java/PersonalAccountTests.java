@@ -13,6 +13,7 @@ import PageObjects.PersonalAccountPage;
 
 import java.time.Duration;
 
+
 public class PersonalAccountTests {
     private WebDriver driver;
     private LoginPage loginPage;
@@ -22,7 +23,6 @@ public class PersonalAccountTests {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        // options.setBinary("C:/Users/slik-/AppData/Local/Yandex/YandexBrowser/Application/browser.exe");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
@@ -38,22 +38,22 @@ public class PersonalAccountTests {
         homePage.clickButtonPersonalAccount();
     }
     @Test
-    @DisplayName("Logout Account")
-    public void logOutAccount() {
+    @DisplayName("Logout")
+    public void logOutOfAccount() {
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickButtonGetOutOfAccount();
         loginPage = new LoginPage(driver);
         Assert.assertTrue(loginPage.isDisplayedTextEnter());
     }
     @Test
-    @DisplayName("Transition from Personal account by click on \"Constructor\"")
+    @DisplayName("Transition from Personal account to Constructor across click to \"Constructor\"")
     public void transitionAcrossConstructor(){
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickHeaderConstructor();
         Assert.assertTrue(personalAccountPage.isDisplayedTextAssembleBurger());
     }
     @Test
-    @DisplayName("Transition from Personal account by click to logo")
+    @DisplayName("Transition from Personal account to Constructor across click to logo")
     public void transitionAcrossLogo(){
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickLogo();
